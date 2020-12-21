@@ -32,8 +32,7 @@ void main() {
     final dio = _buildDio();
     final r = await dio.get("https://httpbin.org/json");
 
-    print(r.headers);
     expect(r.data['slideshow']['title'], "Sample Slide Show");
-    expect(r.data['headers']['accept-encoding'], 'br');
+    expect(r.headers[Headers.contentEncodingHeader], null);
   });
 }
