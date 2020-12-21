@@ -1,11 +1,13 @@
-name: Test
-on: [push, pull_request]
+name: Publish
+on:
+  push:
+    tags:
+      - v*
 
 jobs:
-  test:
-    name: Test
+  publish:
+    name: Publish to pub.dev
     runs-on: ubuntu-20.04
-
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -14,4 +16,3 @@ jobs:
         uses: k-paxian/dart-package-publisher@master
         with:
           credentialJson: ${{ secrets.DART_PUB_CREDENTIAL_JSON }}
-          dryRunOnly: true
