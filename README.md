@@ -1,5 +1,6 @@
 # Dio Brotli transformer
-![Test](https://github.com/vycius/dio_brotli_transformer/workflows/Test/badge.svg?branch=main)
+![Build](https://github.com/vycius/dio_brotli_transformer/workflows/Test/badge.svg?branch=main)
+[![Pub](https://img.shields.io/pub/v/dio_brotli_transformer.svg?style=flat-square)](https://pub.dev/packages/dio_brotli_transformer)
 
 Brotli response support for Dio http client
 
