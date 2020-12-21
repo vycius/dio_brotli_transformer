@@ -1,8 +1,7 @@
 name: dio_brotli_transformer
 description: Brotli support for Dio http client
 version: 0.1.0
-author: Karolis Vycius <k.vycius@gmail.com>
-homepage:
+homepage: https://github.com/vycius/dio_brotli_transformer
 
 environment:
   sdk: ">2.4.0 <3.0.0"
@@ -10,7 +9,6 @@ environment:
 dependencies:
   dio: ">=3.0.0 <4.0.0"
   brotli: ^0.3.0
-
 
 dev_dependencies:
   flutter_test:

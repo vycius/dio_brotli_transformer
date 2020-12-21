@@ -4,7 +4,9 @@ Brotli response support for Dio http client
 
 ## Get started
 
-### Add dependency
+### Installation
+
+In `pubspec.yaml` add the following dependency:
 
 ```yaml
 dependencies:
@@ -15,6 +17,7 @@ dependencies:
 
 ```dart
 import 'package:dio/dio.dart';
+import 'package:dio_brotli_transformer/dio_brotli_transformer.dart';
 
 final dio = Dio(BaseOptions(
   headers: {
@@ -25,3 +28,18 @@ final dio = Dio(BaseOptions(
 dio.transformer = DioBrotliTransformer();
 ```
 
+## Examples
+### Change default transformer
+```dart
+import 'package:dio/dio.dart';
+import 'package:dio_brotli_transformer/dio_brotli_transformer.dart';
+
+final dio = Dio(BaseOptions(
+  headers: {
+    'accept-encoding': 'br',
+  },
+));
+
+dio.transformer = DioBrotliTransformer(transformer: DefaultTransformer());
+```
+ 

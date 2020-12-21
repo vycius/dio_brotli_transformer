@@ -4,6 +4,14 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   Dio _buildDio() {
+    final dio = Dio(BaseOptions(
+      headers: {
+        'accept-encoding': 'br',
+      },
+    ));
+
+    dio.transformer = DioBrotliTransformer(transformer: DefaultTransformer());
+
     return Dio(
       BaseOptions(headers: {
         "accept-encoding": "br",
