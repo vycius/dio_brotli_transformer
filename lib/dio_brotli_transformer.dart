@@ -1,6 +1,5 @@
 library dio_brotli_transformer;
 
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:brotli/brotli.dart';
 
@@ -20,8 +19,7 @@ class DioBrotliTransformer extends Transformer {
   @override
   Future transformResponse(
       RequestOptions options, ResponseBody response) async {
-    final contentEncodingHeaders =
-        response.headers[HttpHeaders.contentEncodingHeader] ?? [];
+    final contentEncodingHeaders = response.headers["content-encoding"] ?? [];
 
     final brotliHeader = contentEncodingHeaders.firstWhere(
       (h) => h.toLowerCase() == 'br',
