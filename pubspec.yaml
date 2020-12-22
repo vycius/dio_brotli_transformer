@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   dio: ">=3.0.0 <4.0.0"
-  brotli: ^0.3.0
+  brotli: ^0.4.0
 
 dev_dependencies:
   flutter_test:
