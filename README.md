@@ -12,7 +12,7 @@ In `pubspec.yaml` add the following dependency:
 
 ```yaml
 dependencies:
-  dio_brotli_transformer: ^0.2.0
+  dio_brotli_transformer: ^0.2.1
 ```
 
 ### Super simple to use
