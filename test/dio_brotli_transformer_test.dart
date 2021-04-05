@@ -14,14 +14,14 @@ void main() {
 
     return Dio(
       BaseOptions(headers: {
-        "accept-encoding": "br",
+        'accept-encoding': 'br',
       }),
     )..transformer = DioBrotliTransformer();
   }
 
   test('brotli response should be transformed', () async {
     final dio = _buildDio();
-    final r = await dio.get("https://httpbin.org/brotli");
+    final r = await dio.get('https://httpbin.org/brotli');
 
     expect(r.data['brotli'], true);
     expect(r.data['headers']['Accept-Encoding'], 'br');
@@ -30,9 +30,9 @@ void main() {
 
   test("without br content type response shouldn't be transformed", () async {
     final dio = _buildDio();
-    final r = await dio.get("https://httpbin.org/json");
+    final r = await dio.get('https://httpbin.org/json');
 
-    expect(r.data['slideshow']['title'], "Sample Slide Show");
+    expect(r.data['slideshow']['title'], 'Sample Slide Show');
     expect(r.headers[Headers.contentEncodingHeader], null);
   });
 }

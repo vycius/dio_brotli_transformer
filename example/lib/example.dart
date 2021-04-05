@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dio_brotli_transformer/dio_brotli_transformer.dart';
 
-main() async {
+Future<void> main() async {
   final dio = Dio(BaseOptions(
     headers: {
       'accept-encoding': 'br',
@@ -10,6 +10,6 @@ main() async {
 
   dio.transformer = DioBrotliTransformer();
 
-  Response response = await dio.get('https://google.com');
+  final response = await dio.get('https://httpbin.org/brotli');
   print(response.data);
 }
