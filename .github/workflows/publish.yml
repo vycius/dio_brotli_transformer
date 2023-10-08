@@ -10,4 +10,5 @@ permissions:
 
 jobs:
   publish:
+    name: Publish
     uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
