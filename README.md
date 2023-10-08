@@ -12,7 +12,7 @@ In `pubspec.yaml` add the following dependency:
 
 ```yaml
 dependencies:
-  dio_brotli_transformer: ^1.0.0
+  dio_brotli_transformer: ^2.0.0
 ```
 
 ### Super simple to use
@@ -21,11 +21,14 @@ dependencies:
 import 'package:dio/dio.dart';
 import 'package:dio_brotli_transformer/dio_brotli_transformer.dart';
 
-final dio = Dio(BaseOptions(
-  headers: {
-    'accept-encoding': 'br',
-  },
- ));
+final dio = Dio(
+  BaseOptions(
+    headers: {
+      'accept-encoding': 'br',
+    },
+  ),
+);
+
 
 dio.transformer = DioBrotliTransformer();
 ```
@@ -36,11 +39,14 @@ dio.transformer = DioBrotliTransformer();
 import 'package:dio/dio.dart';
 import 'package:dio_brotli_transformer/dio_brotli_transformer.dart';
 
-final dio = Dio(BaseOptions(
-  headers: {
-    'accept-encoding': 'br',
-  },
-));
+final dio = Dio(
+  BaseOptions(
+    headers: {
+      'accept-encoding': 'br',
+    },
+  ),
+);
+
 
 dio.transformer = DioBrotliTransformer(transformer: DefaultTransformer());
 ```

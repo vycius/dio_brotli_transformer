@@ -1,0 +1,45 @@
+name: Continuous integration
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Run tests
+        run: flutter test
+
+  dry-run:
+    name: Dry run dart package
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Dry run dart package
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.DART_PUB_CREDENTIAL_JSON }}
+          dryRunOnly: true

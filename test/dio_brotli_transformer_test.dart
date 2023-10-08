@@ -1,26 +1,34 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'package:dio/dio.dart';
 import 'package:dio_brotli_transformer/dio_brotli_transformer.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  Dio _buildDio() {
-    final dio = Dio(BaseOptions(
-      headers: {
-        'accept-encoding': 'br',
-      },
-    ));
+  Dio buildDio() {
+    final dio = Dio(
+      BaseOptions(
+        headers: {
+          'accept-encoding': 'br',
+        },
+      ),
+    );
 
-    dio.transformer = DioBrotliTransformer(transformer: DefaultTransformer());
+    dio.transformer = DioBrotliTransformer(
+      transformer: BackgroundTransformer(),
+    );
 
     return Dio(
-      BaseOptions(headers: {
-        'accept-encoding': 'br',
-      }),
+      BaseOptions(
+        headers: {
+          'accept-encoding': 'br',
+        },
+      ),
     )..transformer = DioBrotliTransformer();
   }
 
   test('brotli response should be transformed', () async {
-    final dio = _buildDio();
+    final dio = buildDio();
     final r = await dio.get('https://httpbin.org/brotli');
 
     expect(r.data['brotli'], true);
@@ -29,7 +37,7 @@ void main() {
   });
 
   test("without br content type response shouldn't be transformed", () async {
-    final dio = _buildDio();
+    final dio = buildDio();
     final r = await dio.get('https://httpbin.org/json');
 
     expect(r.data['slideshow']['title'], 'Sample Slide Show');

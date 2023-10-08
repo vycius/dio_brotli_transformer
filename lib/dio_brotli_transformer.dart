@@ -1,5 +1,3 @@
-library dio_brotli_transformer;
-
 import 'dart:typed_data';
 
 import 'package:brotli/brotli.dart';
@@ -9,7 +7,7 @@ class DioBrotliTransformer extends Transformer {
   Transformer transformer;
 
   DioBrotliTransformer({Transformer? transformer})
-      : transformer = transformer ?? DefaultTransformer();
+      : transformer = transformer ?? BackgroundTransformer();
 
   @override
   Future<String> transformRequest(RequestOptions options) {
@@ -28,7 +26,9 @@ class DioBrotliTransformer extends Transformer {
 
   @override
   Future transformResponse(
-      RequestOptions options, ResponseBody response) async {
+    RequestOptions options,
+    ResponseBody response,
+  ) async {
     if (_isBrotliEncoding(response)) {
       response.stream = response.stream
           .cast<List<int>>()

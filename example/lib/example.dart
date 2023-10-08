@@ -2,11 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:dio_brotli_transformer/dio_brotli_transformer.dart';
 
 Future<void> main() async {
-  final dio = Dio(BaseOptions(
-    headers: {
-      'accept-encoding': 'br',
-    },
-  ));
+  final dio = Dio(
+    BaseOptions(
+      headers: {
+        'accept-encoding': 'br',
+      },
+    ),
+  );
 
   dio.transformer = DioBrotliTransformer();
 
