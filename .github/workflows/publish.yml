@@ -1,18 +1,10 @@
-name: Publish
+name: Publish to pub.dev
+
 on:
   push:
     tags:
-      - v*
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
 
 jobs:
   publish:
-    name: Publish to pub.dev
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: Publish dart package
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          credentialJson: ${{ secrets.DART_PUB_CREDENTIAL_JSON }}
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
