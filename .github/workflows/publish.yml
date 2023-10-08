@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Dry run dart package
+      - name: Publish dart package
         uses: k-paxian/dart-package-publisher@master
         with:
           credentialJson: ${{ secrets.DART_PUB_CREDENTIAL_JSON }}
